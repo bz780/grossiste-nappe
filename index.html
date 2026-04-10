@@ -89,7 +89,7 @@
     {
       "@type": "Question",
       "name": "Quelle est la quantité minimum de commande pour les nappes en gros ?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Notre minimum de commande est de 20 pièces, toutes références confondues. Vous pouvez panacher les coloris et les dimensions au sein d'une même gamme. Les tarifs dégressifs s'appliquent automatiquement : −12 % dès 50 pièces, −20 % dès 200, −30 % dès 500."}
+      "acceptedAnswer": {"@type": "Answer", "text": "Notre minimum de commande est de 25 pièces, toutes références confondues. Vous pouvez panacher les coloris et les dimensions au sein d'une même gamme. Les tarifs dégressifs s'appliquent automatiquement selon le volume, jusqu'à -40 % sur les grandes séries. Contactez-nous pour un devis personnalisé."}
     },
     {
       "@type": "Question",
@@ -99,7 +99,7 @@
     {
       "@type": "Question",
       "name": "Quelle différence entre nappe intissé et nappe papier ?",
-      "acceptedAnswer": {"@type": "Answer", "text": "L'intissé (ou non-tissé) est composé de fibres cellulosiques pressées (viscose/polyester), ce qui lui donne un toucher textile proche du tissu. La nappe papier classique est plus fine et moins résistante aux liquides. En restauration, l'intissé est privilégié car il ne se déchire pas et absorbe moins les taches. Comptez 0,75 à 1,10 € HT pour l'intissé contre 0,40 à 0,60 € pour le papier pur."}
+      "acceptedAnswer": {"@type": "Answer", "text": "L'intissé (ou non-tissé) est composé de fibres cellulosiques pressées (viscose/polyester), ce qui lui donne un toucher textile proche du tissu. La nappe papier classique est plus fine et moins résistante aux liquides. En restauration, l'intissé est privilégié car il ne se déchire pas et absorbe moins les taches. L'intissé est plus cher que le papier pur, mais offre un bien meilleur rendu et une meilleure tenue."}
     },
     {
       "@type": "Question",
@@ -239,17 +239,19 @@ a:hover{color:var(--warm)}
 .gc-event .gamme-icon{background:#EDE2F0;color:#6A5080}
 .gc-mesure .gamme-icon{background:#F0E2EB;color:#856070}
 
-/* --- PRICING TABLE --- */
-.pricing-wrapper{overflow-x:auto}
-.pricing-table{width:100%;border-collapse:collapse;font-size:0.92rem}
-.pricing-table thead{background:var(--olive)}
-.pricing-table th{padding:14px 18px;color:var(--white);font-weight:600;text-align:left;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.04em}
-.pricing-table td{padding:13px 18px;border-bottom:1px solid var(--border)}
-.pricing-table tbody tr:nth-child(even){background:var(--cream)}
-.pricing-table tbody tr:hover{background:var(--sand)}
-.pricing-table .price-cell{font-weight:700;color:var(--olive-dark);white-space:nowrap}
+/* --- PRICING TIERS --- */
+.pricing{padding:4rem 0}
+.pricing .wrap{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+.pricing .section-header{text-align:center;margin-bottom:2rem}
+.pricing .section-header h2{font-size:2rem;margin-bottom:.75rem}
+.pricing .section-header p{font-size:1.05rem;color:#555;max-width:640px;margin:0 auto}
+.pricing-tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin:2.5rem 0}
+.tier{background:var(--surface,#f5f0ea);border-radius:12px;padding:2rem 1.5rem;text-align:center;border:2px solid transparent;transition:border-color .3s}
+.tier:hover{border-color:var(--accent,#6b7c3e)}
+.tier-volume{font-size:1.3rem;font-weight:700;color:var(--accent,#6b7c3e);margin-bottom:.5rem}
+.tier-label{font-size:1.6rem;font-weight:800;margin-bottom:1rem}
+.tier p{font-size:.95rem;color:#666;line-height:1.5}
 .pricing-note{font-size:0.85rem;color:var(--text-light);margin-top:16px;text-align:center;font-style:italic}
-.badge-best{display:inline-block;background:var(--warm);color:var(--white);font-size:0.7rem;padding:2px 8px;border-radius:10px;margin-left:8px;vertical-align:middle;font-weight:600}
 
 /* --- SEGMENTS (Who buys) --- */
 .segments-layout{display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:start}
@@ -340,8 +342,8 @@ a:hover{color:var(--warm)}
   .nav-toggle{display:block}
   .btn-outline{margin-left:0;margin-top:10px}
   .hero-content .hero-btns{display:flex;flex-direction:column;align-items:center}
-  .pricing-table{font-size:0.82rem}
-  .pricing-table th,.pricing-table td{padding:10px 10px}
+  .pricing-tiers{grid-template-columns:1fr 1fr}
+  .tier{padding:1.5rem 1rem}
   .seg-specs{grid-template-columns:1fr!important}
   .segment-nav{flex-direction:column}
   .segment-btn{width:100%;text-align:left}
@@ -384,7 +386,7 @@ a:hover{color:var(--warm)}
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <h1>Grossiste nappe pour la restauration,<br>l'hôtellerie et l'événementiel</h1>
-    <p>Polyester anti-tache, coton damassé, intissé jetable, toile cirée PVC &mdash; prix HT dégressifs dès 20 pièces, expédition sous 48 h depuis notre entrepôt lyonnais.</p>
+    <p>Polyester anti-tache, coton damassé, intissé jetable, toile cirée PVC &mdash; tarifs dégressifs sur devis, expédition sous 48 h depuis notre entrepôt lyonnais.</p>
     <div class="hero-btns">
       <a href="#contact" class="btn btn-primary">Demander un devis gratuit</a>
       <a href="#gammes" class="btn btn-outline">Voir les gammes</a>
@@ -421,7 +423,7 @@ a:hover{color:var(--warm)}
         <p>Les acteurs du secteur comme Comptoir Textile Hôtelier, TGL dans les Vosges ou Tissco se concentrent souvent sur une niche (tissu haut de gamme ou jetable éco-responsable). Notre positionnement est différent : nous proposons un catalogue transversal qui permet de commander dans un même panier des nappes polyester anti-tache pour le service quotidien, des nappes coton damassé pour le restaurant gastronomique, de l'intissé pour le brunch du dimanche et de la toile cirée pour la terrasse.</p>
       </div>
       <div class="intro-col">
-        <p>Nos tarifs sont calculés en direct avec nos ateliers partenaires (Portugal, Turquie, Vosges) sans intermédiaire. Résultat : des prix compétitifs sur le polyester (dès 7,90 € HT la nappe 150x150), comparables à ce que pratiquent les grossistes de la zone d'Aubervilliers comme MCO, mais avec une qualité de finition contrôlée (ourlets renforcés, grammage constant, traitement anti-tache garanti).</p>
+        <p>Nos tarifs sont calculés en direct avec nos ateliers partenaires (Portugal, Turquie, Vosges) sans intermédiaire. Résultat : des prix compétitifs, comparables à ce que pratiquent les grossistes de la zone d'Aubervilliers comme MCO, mais avec une qualité de finition contrôlée (ourlets renforcés, grammage constant, traitement anti-tache garanti). Demandez un devis pour obtenir votre tarif personnalisé.</p>
         <div class="intro-highlight">
           <p>Franco de port dès 300 € HT en France métropolitaine. Livraison en 48 h pour les références en stock (polyester uni, intissé, toile cirée). Sur-mesure et broderie en 10-15 jours ouvrés.</p>
         </div>
@@ -441,7 +443,7 @@ a:hover{color:var(--warm)}
         <div class="gamme-header">
           <div class="gamme-icon">P</div>
           <h3>Polyester anti-tache</h3>
-          <div class="price-from">dès 7,90 € HT / pièce</div>
+          <div class="price-from">Tarif sur devis — remise volume</div>
         </div>
         <div class="gamme-body"><ul>
           <li>220-250 g/m², traitement déperlant</li>
@@ -456,7 +458,7 @@ a:hover{color:var(--warm)}
         <div class="gamme-header">
           <div class="gamme-icon">C</div>
           <h3>Coton damassé &amp; satiné</h3>
-          <div class="price-from">dès 12,50 € HT / pièce</div>
+          <div class="price-from">Tarif sur devis — remise volume</div>
         </div>
         <div class="gamme-body"><ul>
           <li>100 % coton, 180-220 g/m²</li>
@@ -471,7 +473,7 @@ a:hover{color:var(--warm)}
         <div class="gamme-header">
           <div class="gamme-icon">I</div>
           <h3>Intissé &amp; papier jetable</h3>
-          <div class="price-from">dès 0,75 € HT / pièce</div>
+          <div class="price-from">Tarif sur devis — remise volume</div>
         </div>
         <div class="gamme-body"><ul>
           <li>Intissé 40-50 g/m² toucher textile</li>
@@ -486,7 +488,7 @@ a:hover{color:var(--warm)}
         <div class="gamme-header">
           <div class="gamme-icon">V</div>
           <h3>Toile cirée &amp; PVC</h3>
-          <div class="price-from">dès 4,90 € HT / mètre</div>
+          <div class="price-from">Tarif sur devis — remise volume</div>
         </div>
         <div class="gamme-body"><ul>
           <li>PVC souple 0,20 mm sur support coton</li>
@@ -501,7 +503,7 @@ a:hover{color:var(--warm)}
         <div class="gamme-header">
           <div class="gamme-icon">S</div>
           <h3>Chemins de table &amp; sets</h3>
-          <div class="price-from">dès 0,35 € HT / pièce</div>
+          <div class="price-from">Tarif sur devis — remise volume</div>
         </div>
         <div class="gamme-body"><ul>
           <li>Sets papier, intissé ou polyester</li>
@@ -516,7 +518,7 @@ a:hover{color:var(--warm)}
         <div class="gamme-header">
           <div class="gamme-icon">E</div>
           <h3>Nappage événementiel</h3>
-          <div class="price-from">dès 10,00 € HT / pièce</div>
+          <div class="price-from">Tarif sur devis — remise volume</div>
         </div>
         <div class="gamme-body"><ul>
           <li>Housses lycra mange-debout blanc/noir</li>
@@ -531,7 +533,7 @@ a:hover{color:var(--warm)}
         <div class="gamme-header">
           <div class="gamme-icon">M</div>
           <h3>Sur-mesure &amp; broderie</h3>
-          <div class="price-from">dès 16,00 € HT / pièce</div>
+          <div class="price-from">Tarif sur devis — remise volume</div>
         </div>
         <div class="gamme-body"><ul>
           <li>Découpe à vos dimensions exactes</li>
@@ -555,125 +557,61 @@ a:hover{color:var(--warm)}
       <div class="matiere-card">
         <h3>Polyester anti-tache (220-250 g/m²)</h3>
         <p>La référence en restauration courante. Le traitement déperlant fait glisser les liquides (vin rouge, café, sauce tomate) sans pénétrer la fibre. Se lave en machine à 60 °C, sèche en 2 h, ne nécessite pas de repassage. Durée de vie : 300 à 500 lavages selon l'intensité d'usage. Le polycoton (mélange polyester/coton) offre un toucher plus doux mais absorbe davantage.</p>
-        <div class="mat-price">A partir de 7,90 € HT (150x150 cm)</div>
+        <div class="mat-price">Tarif sur devis — remise volume</div>
         <div class="mat-usage">Restaurants, brasseries, cantines, usage quotidien intensif</div>
       </div>
       <div class="matiere-card">
         <h3>Coton damassé (180-220 g/m²)</h3>
         <p>Le tissu noble par excellence pour la gastronomie et l'hôtellerie de standing. Le tissage jacquard crée des motifs en relief (losanges, fleurs de lys, bandes satinées) qui captent la lumière. Le tombé est naturel et élégant. En revanche, le coton absorbe les taches, rétrécit de 3-5 % au premier lavage et nécessite un repassage soigné. Les fabricants français (TGL, Sonolys, Tissco dans les Vosges) proposent des qualités exceptionnelles.</p>
-        <div class="mat-price">A partir de 12,50 € HT (150x200 cm)</div>
+        <div class="mat-price">Tarif sur devis — remise volume</div>
         <div class="mat-usage">Gastronomie, hôtellerie 4-5 étoiles, événements haut de gamme</div>
       </div>
       <div class="matiere-card">
         <h3>Intissé (non-tissé, 40-50 g/m²)</h3>
         <p>L'alternative jetable qui a le toucher du tissu. Composé de fibres cellulosiques pressées (viscose, polyester), l'intissé ne se déchire pas comme le papier et résiste mieux aux liquides. Il se décline en prédécoupé (nappe individuelle) ou en rouleau à découper. C'est le choix privilégié des traiteurs, des collectivités et des restaurants qui servent en terrasse. Des grossistes comme Covr ou Oscar de la Table (fabricant à Verdun) se sont spécialisés sur ce segment.</p>
-        <div class="mat-price">A partir de 0,75 € HT / nappe prédécoupée</div>
+        <div class="mat-price">Tarif sur devis — remise volume</div>
         <div class="mat-usage">Traiteurs, terrasses, cantines, événements à fort volume</div>
       </div>
       <div class="matiere-card">
         <h3>Toile cirée PVC (0,15-0,25 mm)</h3>
         <p>La solution la plus pratique pour les terrasses, les guinguettes et les cantines scolaires. La toile cirée se pose à plat, s'essuie au chiffon humide et ne nécessite aucun lavage. Vendue au mètre en rouleau de 140 cm de large, elle existe en uni, vichy, motif provençal ou imprimé contemporain. Les grossistes d'Aubervilliers (MCO, StockEtik) proposent un large choix à des prix compétitifs. Attention : certains PVC bas de gamme se craquellent après un an d'exposition au soleil.</p>
-        <div class="mat-price">A partir de 4,90 € HT / mètre linéaire</div>
+        <div class="mat-price">Tarif sur devis — remise volume</div>
         <div class="mat-usage">Terrasses, guinguettes, cantines, usage extérieur</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING TABLE -->
-<section class="section section-alt" id="tarifs">
-  <div class="container">
-    <h2 class="section-title">Tarifs dégressifs HT</h2>
-    <p class="section-subtitle">Plus vous commandez, moins vous payez. Remises calculées sur le volume global de votre commande, pas par référence.</p>
-    <div class="pricing-wrapper">
-      <table class="pricing-table">
-        <thead>
-          <tr>
-            <th>Gamme</th>
-            <th>1-19 pcs</th>
-            <th>20-49 pcs</th>
-            <th>50-199 pcs (-12 %)</th>
-            <th>200-499 pcs (-20 %)</th>
-            <th>500+ pcs (-30 %)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Polyester anti-tache</strong><br><small>150x150 cm blanc</small></td>
-            <td class="price-cell">9,20 €</td>
-            <td class="price-cell">7,90 €</td>
-            <td class="price-cell">6,95 €</td>
-            <td class="price-cell">6,30 €</td>
-            <td class="price-cell">5,50 € <span class="badge-best">Best</span></td>
-          </tr>
-          <tr>
-            <td><strong>Polyester anti-tache</strong><br><small>180x300 cm</small></td>
-            <td class="price-cell">16,80 €</td>
-            <td class="price-cell">14,50 €</td>
-            <td class="price-cell">12,75 €</td>
-            <td class="price-cell">11,60 €</td>
-            <td class="price-cell">10,15 €</td>
-          </tr>
-          <tr>
-            <td><strong>Coton damassé</strong><br><small>150x200 cm</small></td>
-            <td class="price-cell">16,50 €</td>
-            <td class="price-cell">14,20 €</td>
-            <td class="price-cell">12,50 €</td>
-            <td class="price-cell">11,35 €</td>
-            <td class="price-cell">9,95 €</td>
-          </tr>
-          <tr>
-            <td><strong>Coton satiné</strong><br><small>180x250 cm</small></td>
-            <td class="price-cell">21,00 €</td>
-            <td class="price-cell">18,20 €</td>
-            <td class="price-cell">16,00 €</td>
-            <td class="price-cell">14,55 €</td>
-            <td class="price-cell">12,70 €</td>
-          </tr>
-          <tr>
-            <td><strong>Intissé prédécoupé</strong><br><small>120x120 cm (carton x50)</small></td>
-            <td class="price-cell">1,00 € / pc</td>
-            <td class="price-cell">0,85 €</td>
-            <td class="price-cell">0,75 €</td>
-            <td class="price-cell">0,68 €</td>
-            <td class="price-cell">0,60 €</td>
-          </tr>
-          <tr>
-            <td><strong>Intissé rouleau</strong><br><small>1,20 m x 25 m</small></td>
-            <td class="price-cell">19,50 €</td>
-            <td class="price-cell">16,80 €</td>
-            <td class="price-cell">14,80 €</td>
-            <td class="price-cell">13,40 €</td>
-            <td class="price-cell">11,70 €</td>
-          </tr>
-          <tr>
-            <td><strong>Toile cirée PVC</strong><br><small>140 cm large, au mètre</small></td>
-            <td class="price-cell">5,80 € / m</td>
-            <td class="price-cell">4,90 €</td>
-            <td class="price-cell">4,30 €</td>
-            <td class="price-cell">3,90 €</td>
-            <td class="price-cell">3,40 €</td>
-          </tr>
-          <tr>
-            <td><strong>Chemin de table tissu</strong><br><small>40x200 cm</small></td>
-            <td class="price-cell">4,90 €</td>
-            <td class="price-cell">4,20 €</td>
-            <td class="price-cell">3,70 €</td>
-            <td class="price-cell">3,35 €</td>
-            <td class="price-cell">2,95 €</td>
-          </tr>
-          <tr>
-            <td><strong>Set de table intissé</strong><br><small>30x40 cm (carton x100)</small></td>
-            <td class="price-cell">0,45 € / pc</td>
-            <td class="price-cell">0,38 €</td>
-            <td class="price-cell">0,33 €</td>
-            <td class="price-cell">0,30 €</td>
-            <td class="price-cell">0,26 €</td>
-          </tr>
-        </tbody>
-      </table>
+<section class="pricing" id="tarifs">
+  <div class="wrap">
+    <div class="section-header">
+      <h2>Tarifs degressifs sur mesure</h2>
+      <p>Notre politique tarifaire recompense les volumes. Plus vous commandez, plus le prix unitaire baisse — jusqu'a -40 % sur les grandes series.</p>
     </div>
-    <p class="pricing-note">Tous les prix s'entendent HT, hors livraison. Franco de port dès 300 € HT (France métro.). Supplément broderie : 3 à 5 € HT/pièce selon taille du motif. Tarifs indicatifs, devis personnalisé sur demande.</p>
+    <div class="pricing-tiers">
+      <div class="tier">
+        <div class="tier-volume">25 – 99 pcs</div>
+        <div class="tier-label">Tarif decouverte</div>
+        <p>Ideal pour un premier assortiment ou une commande test. Acces a l'ensemble du catalogue.</p>
+      </div>
+      <div class="tier">
+        <div class="tier-volume">100 – 499 pcs</div>
+        <div class="tier-label">-10 a -15 %</div>
+        <p>Volume revendeur. Remise progressive, panachage possible entre les gammes.</p>
+      </div>
+      <div class="tier">
+        <div class="tier-volume">500 – 1 999 pcs</div>
+        <div class="tier-label">-20 a -30 %</div>
+        <p>Volume CHR et evenementiel. Personnalisation incluse, palette complete.</p>
+      </div>
+      <div class="tier">
+        <div class="tier-volume">2 000+ pcs</div>
+        <div class="tier-label">-30 a -40 %</div>
+        <p>Grands comptes, marque blanche, import direct. Tarif negocie, packaging sur mesure.</p>
+      </div>
+    </div>
+    <p class="pricing-note">Franco de port a partir de 500 EUR HT. Echantillons disponibles sur demande pour les commandes professionnelles.</p>
+    <div style="text-align:center;margin-top:2rem"><a href="#contact" class="btn">Demander un devis gratuit</a></div>
   </div>
 </section>
 
@@ -800,7 +738,7 @@ a:hover{color:var(--warm)}
 
       <div class="faq-item">
         <button class="faq-question">Quelle est la quantité minimum de commande ?</button>
-        <div class="faq-answer"><div class="faq-answer-inner">Notre minimum est de 20 pièces, toutes références confondues. Vous pouvez panacher les coloris et les dimensions au sein d'une même gamme. Les tarifs dégressifs s'appliquent sur le volume global : -12 % dès 50 pièces, -20 % dès 200, -30 % dès 500. Pour les toiles cirées et l'intissé en rouleau, le minimum est de 5 rouleaux.</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">Notre minimum est de 25 pièces, toutes références confondues. Vous pouvez panacher les coloris et les dimensions au sein d'une même gamme. Les tarifs dégressifs s'appliquent sur le volume global : jusqu'à -40 % sur les grandes séries. Contactez-nous pour un devis personnalisé. Pour les toiles cirées et l'intissé en rouleau, le minimum est de 5 rouleaux.</div></div>
       </div>
 
       <div class="faq-item">
@@ -944,7 +882,7 @@ a:hover{color:var(--warm)}
       </ul>
     </div>
   </div>
-  <div class="footer-bottom">&copy; 2025 Grossiste Nappe. Tous droits réservés. Prix HT indicatifs, sous réserve de modification.</div>
+  <div class="footer-bottom">&copy; 2025 Grossiste Nappe. Tous droits réservés. Tarifs sur devis, sous réserve de modification.</div>
 </footer>
 
 <!-- JAVASCRIPT -->
