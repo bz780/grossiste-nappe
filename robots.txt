@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://grossiste-nappe.fr/sitemap.xml
