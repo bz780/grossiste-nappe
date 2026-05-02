@@ -234,6 +234,21 @@ a:hover{color:var(--warm)}
 .gamme-body li:last-child{border-bottom:none}
 .gamme-body li::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--olive-light);margin-right:8px;vertical-align:middle}
 
+.filter-bar{background:#fff;border:1px solid var(--border);border-radius:8px;padding:18px 20px;margin-bottom:32px;display:grid;grid-template-columns:repeat(4,1fr) auto;gap:16px;align-items:end}
+.filter-group{display:flex;flex-direction:column;gap:6px;min-width:0}
+.filter-group label{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--text-light);font-weight:700}
+.filter-group select{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:6px;background:#fff;font-size:.9rem;color:var(--text);cursor:pointer;font-family:inherit}
+.filter-group select:focus{outline:2px solid var(--olive-dark);outline-offset:1px}
+.filter-group option:disabled{color:#bbb}
+.filter-actions{display:flex;flex-direction:column;gap:6px;align-items:stretch}
+.filter-count{font-size:.8rem;color:var(--text-light);white-space:nowrap;text-align:center}
+.filter-reset{background:#E8F0E2;color:var(--olive-dark);border:1px solid var(--olive-dark);padding:9px 14px;border-radius:6px;font-size:.85rem;cursor:pointer;font-family:inherit;transition:background .2s;white-space:nowrap}
+.filter-reset:hover{background:var(--olive-dark);color:#fff}
+.filter-empty{text-align:center;padding:50px 20px;background:#fff;border:1px dashed var(--border);border-radius:8px;color:var(--text-light);display:none}
+.filter-empty a{color:var(--olive-dark);font-weight:600}
+.gamme-card.is-hidden{display:none}
+@media(max-width:768px){.filter-bar{grid-template-columns:1fr 1fr}.filter-actions{grid-column:span 2;flex-direction:row;justify-content:space-between;align-items:center}}
+
 .gc-poly .gamme-icon{background:#E8F0E2;color:#5E6D50}
 .gc-coton .gamme-icon{background:#F0E8DC;color:#A67C52}
 .gc-jetable .gamme-icon{background:#E2EBF0;color:#4A7085}
@@ -442,10 +457,58 @@ a:hover{color:var(--warm)}
 <section class="section section-alt" id="gammes">
   <div class="container">
     <h2 class="section-title">Nos gammes de nappes professionnelles</h2>
-    <p class="section-subtitle">Sept familles de produits pour couvrir tous les usages, de la brasserie de quartier au banquet de 500 couverts.</p>
-    <div class="gammes-grid">
+    <p class="section-subtitle">Six familles de produits pour couvrir tous les usages, de la brasserie de quartier au banquet de 500 couverts.</p>
 
-      <div class="gamme-card gc-poly">
+    <div class="filter-bar" id="filter-bar">
+      <div class="filter-group">
+        <label for="f-matiere">Matiere</label>
+        <select id="f-matiere" data-filter="matiere">
+          <option value="">Toutes</option>
+          <option value="coton">Coton</option>
+          <option value="polyester">Polyester</option>
+          <option value="lin">Lin</option>
+          <option value="melange">Melange</option>
+          <option value="pvc">Plastique / PVC</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="f-format">Format</label>
+        <select id="f-format" data-filter="format">
+          <option value="">Tous</option>
+          <option value="rectangulaire">Rectangulaire</option>
+          <option value="ronde">Ronde</option>
+          <option value="carree">Carree</option>
+          <option value="sur-mesure">Sur-mesure</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="f-moq">MOQ</label>
+        <select id="f-moq" data-filter="moq">
+          <option value="">Tous</option>
+          <option value="25">Des 25 pcs</option>
+          <option value="50">Des 50 pcs</option>
+          <option value="100">Des 100 pcs</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="f-prix">Prix HT</label>
+        <select id="f-prix" data-filter="prix">
+          <option value="">Tous</option>
+          <option value="lt8">Moins de 8 EUR</option>
+          <option value="8-15">8 a 15 EUR</option>
+          <option value="15-30">15 a 30 EUR</option>
+          <option value="gt30">Plus de 30 EUR</option>
+        </select>
+      </div>
+      <div class="filter-actions">
+        <span class="filter-count" id="filter-count">6 / 6 gammes</span>
+        <button type="button" class="filter-reset" id="filter-reset">Reinitialiser</button>
+      </div>
+    </div>
+    <div class="filter-empty" id="filter-empty">Aucune gamme ne correspond a votre selection. <a href="#" id="filter-empty-reset">Reinitialiser les filtres</a></div>
+    <div class="gammes-grid" id="gammes-grid">
+
+      <div class="gamme-card gc-poly" data-matiere="polyester,melange" data-format="rectangulaire,carree,ronde" data-moq="25" data-prix="8-15">
         <div class="gamme-card-img"><img src="/images/prod-polyester.webp" alt="Nappe polyester anti-tache blanche sur table de restaurant" width="800" height="600" loading="lazy"></div>
         <div class="gamme-header">
           <div class="gamme-icon">P</div>
@@ -461,7 +524,7 @@ a:hover{color:var(--warm)}
         </ul></div>
       </div>
 
-      <div class="gamme-card gc-coton">
+      <div class="gamme-card gc-coton" data-matiere="coton,lin" data-format="rectangulaire,carree" data-moq="25" data-prix="15-30">
         <div class="gamme-card-img"><img src="/images/prod-coton-damasse.webp" alt="Nappe coton damassé jacquard sur table dressée élégante" width="800" height="600" loading="lazy"></div>
         <div class="gamme-header">
           <div class="gamme-icon">C</div>
@@ -477,7 +540,7 @@ a:hover{color:var(--warm)}
         </ul></div>
       </div>
 
-      <div class="gamme-card gc-jetable">
+      <div class="gamme-card gc-jetable" data-matiere="polyester,melange" data-format="rectangulaire,sur-mesure" data-moq="100" data-prix="lt8">
         <div class="gamme-card-img"><img src="/images/prod-intisse-jetable.webp" alt="Nappe intissé jetable pour événement traiteur et catering" width="800" height="600" loading="lazy"></div>
         <div class="gamme-header">
           <div class="gamme-icon">I</div>
@@ -493,7 +556,7 @@ a:hover{color:var(--warm)}
         </ul></div>
       </div>
 
-      <div class="gamme-card gc-pvc">
+      <div class="gamme-card gc-pvc" data-matiere="pvc" data-format="rectangulaire,sur-mesure" data-moq="25" data-prix="lt8">
         <div class="gamme-header">
           <div class="gamme-icon">V</div>
           <h3>Toile cirée &amp; PVC</h3>
@@ -508,7 +571,7 @@ a:hover{color:var(--warm)}
         </ul></div>
       </div>
 
-      <div class="gamme-card gc-chemin">
+      <div class="gamme-card gc-chemin" data-matiere="coton,polyester" data-format="rectangulaire" data-moq="50" data-prix="lt8">
         <div class="gamme-header">
           <div class="gamme-icon">S</div>
           <h3>Chemins de table &amp; sets</h3>
@@ -523,7 +586,7 @@ a:hover{color:var(--warm)}
         </ul></div>
       </div>
 
-      <div class="gamme-card gc-event">
+      <div class="gamme-card gc-event" data-matiere="polyester,coton,lin" data-format="ronde,sur-mesure" data-moq="50" data-prix="gt30">
         <div class="gamme-header">
           <div class="gamme-icon">E</div>
           <h3>Nappage événementiel &amp; sur-mesure</h3>
@@ -1004,5 +1067,54 @@ document.querySelectorAll('.nav-links a').forEach(function(a){
     }
   });
 })();</script>
+<script>
+/* ===== Filtres transverses ===== */
+(function(){
+  var bar = document.getElementById('filter-bar');
+  var grid = document.getElementById('gammes-grid');
+  if (!bar || !grid) return;
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.gamme-card'));
+  var selects = Array.prototype.slice.call(bar.querySelectorAll('select[data-filter]'));
+  var countEl = document.getElementById('filter-count');
+  var emptyEl = document.getElementById('filter-empty');
+  var resetBtn = document.getElementById('filter-reset');
+  var emptyResetLink = document.getElementById('filter-empty-reset');
+  var totalCards = cards.length;
+  function cardValues(card, key){ var raw = card.getAttribute('data-' + key) || ''; return raw.split(',').map(function(s){ return s.trim(); }).filter(Boolean); }
+  function cardMatches(card, filters){ for (var key in filters){ var v = filters[key]; if (!v) continue; if (cardValues(card, key).indexOf(v) === -1) return false; } return true; }
+  function getActiveFilters(){ var f = {}; selects.forEach(function(sel){ f[sel.dataset.filter] = sel.value; }); return f; }
+  function apply(){
+    var filters = getActiveFilters();
+    var visible = 0;
+    cards.forEach(function(card){ if (cardMatches(card, filters)){ card.classList.remove('is-hidden'); visible++; } else card.classList.add('is-hidden'); });
+    countEl.textContent = visible + ' / ' + totalCards + ' gammes';
+    emptyEl.style.display = visible === 0 ? 'block' : 'none';
+    grid.style.display = visible === 0 ? 'none' : '';
+    selects.forEach(function(sel){
+      var key = sel.dataset.filter, current = sel.value;
+      Array.prototype.slice.call(sel.options).forEach(function(opt){
+        var lbl = opt.dataset.baseLabel || opt.textContent.replace(/\s*\(\d+\)\s*$/, '');
+        opt.dataset.baseLabel = lbl;
+        if (!opt.value){
+          var others = {}; for (var k in filters){ if (k !== key) others[k] = filters[k]; }
+          var n = cards.filter(function(c){ return cardMatches(c, others); }).length;
+          opt.textContent = lbl + ' (' + n + ')';
+        } else {
+          var test = {}; for (var k2 in filters){ test[k2] = filters[k2]; }
+          test[key] = opt.value;
+          var n2 = cards.filter(function(c){ return cardMatches(c, test); }).length;
+          opt.textContent = lbl + ' (' + n2 + ')';
+          opt.disabled = (n2 === 0 && opt.value !== current);
+        }
+      });
+    });
+  }
+  function reset(){ selects.forEach(function(sel){ sel.value = ''; }); apply(); }
+  selects.forEach(function(sel){ sel.addEventListener('change', apply); });
+  resetBtn.addEventListener('click', reset);
+  if (emptyResetLink) emptyResetLink.addEventListener('click', function(e){ e.preventDefault(); reset(); });
+  apply();
+})();
+</script>
 </body>
 </html>
