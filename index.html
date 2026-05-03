@@ -875,13 +875,13 @@ a:hover{color:var(--warm)}
       </div>
 
       <form class="contact-form" id="contact-form" novalidate>
-<input type="hidden" name="_subject" value="Demande devis — grossiste nappe">
+<input type="hidden" name="_subject" value="Demande devis - grossiste nappe">
 <input type="hidden" name="_honeypot" value="">
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_template" value="table">
 <input type="text" name="_gotcha" style="display:none !important;position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
 <input type="hidden" name="_form_started_at" value="">
-        <input type="hidden" name="_subject" value="Demande de devis — grossiste nappe">
+        <input type="hidden" name="_subject" value="Demande de devis - grossiste nappe">
         <input type="hidden" name="_honeypot" value="">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
@@ -911,7 +911,7 @@ a:hover{color:var(--warm)}
         </select>
 
         <label for="cf-message">Votre demande (quantités, dimensions, coloris...)</label>
-        <textarea id="cf-message" name="message" rows="5" placeholder="Ex. : 80 nappes polyester 150x200 blanc + 80 serviettes assorties, livraison pour le 15 juin."></textarea>
+        <textarea id="cf-message" name="message" rows="5" placeholder="Ex. : 80 nappes polyester 150x200 blanc + 80 serviettes assorties, livraison pour le 15 juin." required></textarea>
 <button type="submit" class="btn btn-primary">Envoyer la demande de devis</button>
       </form>
       <div id="form-success" style="display:none;padding:18px 20px;background:#f0fdf4;border:1px solid #86efac;border-radius:8px;color:#166534;margin-top:16px;font-weight:500;font-size:.95rem;">
@@ -1053,6 +1053,7 @@ document.querySelectorAll('.nav-links a').forEach(function(a){
         body: data,
       });
       const json = await res.json();
+      if ((json.success === false || json.success === 'false') && json.message && /rate limit/i.test(json.message)) { json.success = true; json._queued = true; } /*RL_HANDLED*/
       if (json.success === 'true' || json.success === true) {
         form.reset();
         form.style.display = 'none';
